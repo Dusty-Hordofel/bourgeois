@@ -248,6 +248,17 @@ export default function Home() {
         </section>
 
         <section className="relative h-[500px]">
+          <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center absolute z-50 left-10 top-10">
+            NOS SOLUTIONS <br /> DE NETTOYAGE
+          </h2>
+          <p className="absolute z-50 left-10 bottom-10 w-[40%] ">
+            Chez Bourgeois Propreté, nous sommes fiers d'utiliser des produits
+            et des technologies de nettoyage de pointe pour garantir des
+            services de première qualité à nos clients. Nous nous engageons à
+            n'utiliser que les outils les plus récents et les plus avancés qui
+            sont non seulement efficaces, mais aussi écologiques et sans danger
+            pour votre famille et l'environnement.
+          </p>
           <Image
             src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727390595/bourgeois/cleaning-supply-flatlay-bottom_kruyo2.jpg"
             layout="fill"
@@ -308,7 +319,11 @@ export default function Home() {
         </section> */}
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+            {/* <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+              Pourquoi nous choisir ?
+            </h2> */}
+
+            <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center absolute z-50 left-10 top-10">
               Pourquoi nous choisir ?
             </h2>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">

@@ -1,12 +1,137 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import ShimmerButton from "@/components/magicui/shimmer-button";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
+
+const people = [
+  {
+    id: 1,
+    name: "John Doe",
+    designation: "Software Engineer",
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+  },
+  {
+    id: 2,
+    name: "Robert Johnson",
+    designation: "Product Manager",
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 3,
+    name: "Jane Smith",
+    designation: "Data Scientist",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 4,
+    name: "Emily Davis",
+    designation: "UX Designer",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 5,
+    name: "Tyler Durden",
+    designation: "Soap Developer",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
+  },
+  // {
+  //   id: 6,
+  //   name: "Dora",
+  //   designation: "The Explorer",
+  //   image:
+  //     "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
+  // },
+];
+
+const DummyContent = () => {
+  return (
+    <>
+      {[...new Array(3).fill(1)].map((_, index) => {
+        return (
+          <div
+            key={"dummy-content" + index}
+            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
+          >
+            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+              <span className="font-bold text-neutral-700 dark:text-neutral-200">
+                The first rule of Apple club is that you boast about Apple club.
+              </span>{" "}
+              Keep a journal, quickly jot down a grocery list, and take amazing
+              class notes. Want to convert those notes to text? No problem.
+              Langotiya jeetu ka mara hua yaar is ready to capture every
+              thought.
+            </p>
+            <Image
+              src="https://assets.aceternity.com/macbook.png"
+              alt="Macbook mockup from Aceternity UI"
+              height="500"
+              width="500"
+              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
+const data = [
+  {
+    category: "Artificial Intelligence",
+    title: "You can do more with AI.",
+    src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },
+  {
+    category: "Productivity",
+    title: "Enhance your productivity.",
+    src: "https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },
+  {
+    category: "Product",
+    title: "Launching the new Apple Vision Pro.",
+    src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },
+
+  {
+    category: "Product",
+    title: "Maps for your iPhone 15 Pro Max.",
+    src: "https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },
+  {
+    category: "iOS",
+    title: "Photography just got better.",
+    src: "https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },
+  {
+    category: "Hiring",
+    title: "Hiring for a Staff Software Engineer",
+    src: "https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    content: <DummyContent />,
+  },
+];
 
 export default function Home() {
+  const cards = data.map((card, index) => (
+    <Card key={card.src} card={card} index={index} />
+  ));
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-14 flex items-center">
@@ -44,33 +169,94 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black relative">
-          <Image
-            src="https://images.unsplash.com/photo-1708201229016-881f2f045ab8?q=80&w=2900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Image de fond représentant un bureau propre"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-50"
-          />
-          <div className="container px-4 md:px-6 relative z-10">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                  Nettoyage professionnel pour votre entreprise
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
-                  Des locaux impeccables pour une image irréprochable. Découvrez
-                  nos services de nettoyage sur mesure.
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Button>Obtenir un devis</Button>
-                <Button variant="outline">Nos services</Button>
+        <section className="">
+          {/* text-white */}
+          <div className="flex bg-yellow-200 px-10 pb-10 pt-20">
+            <h1 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
+              Bourgeois Propreté ,<br />
+              <span className="text-green-600">
+                l’excellence pour un <br />
+                cadre de vie impeccable.
+              </span>
+              {/* l’excellence de la propreté, pour des espaces
+            impeccables. */}
+            </h1>
+            {/* objectif est d’assurer la propreté et le confort de chaque espace
+              que nous traitons. */}
+            <div className="flex flex-col w-[35%] ">
+              <p>
+                Nous nous engageons à fournir des services de nettoyage de haute
+                qualité adaptés à une variété de secteurs. Nous intervenons avec
+                expertise dans le secteur médical, pour les professionnels, les
+                environnements industriels, ainsi que pour les particuliers.
+                Notre.
+              </p>
+              <div className="flex flex-row bg-gray-400 justify-end gap-x-14 pb-5 pt-10">
+                <div
+                  // className="flex flex-row items-center justify-center mb-10 w-full"
+                  className="flex flex-row items-center justify-center"
+                >
+                  <AnimatedTooltip items={people} />
+                </div>
+                <div
+
+                // className="z-10 flex min-h-[16rem] items-center justify-center"
+                >
+                  <ShimmerButton className="shadow-2xl flex gap-x-4">
+                    <span className="whitespace-pre-wrap text-center text-sm leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg font-extralight">
+                      Ils parlent de nous{" "}
+                    </span>
+                    <ArrowRight size={28} strokeWidth={0.75} />
+                  </ShimmerButton>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+        <div className=""></div>
+        <section className="relative h-[700px]">
+          <Image
+            src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727386521/bourgeois/pexels-vlad-fonsark-2175898-5100851_myhlje.jpg"
+            layout="fill"
+            objectFit="cover"
+            alt="image d'un nettoyage de vitre d'immeuble"
+          />
+        </section>
+
+        <section>
+          <div className="flex bg-yellow-200 px-10 pb-10 pt-16">
+            <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase bg-red-400 flex items-center">
+              NOS SERVICES <br /> DE NETTOYAGE
+            </h2>
+            {/* objectif est d’assurer la propreté et le confort de chaque espace
+              que nous traitons. */}
+            <div className="w-[35%] ">
+              <p className="bg-purple-400 h-full flex items-center">
+                Nous proposons une large gamme de services de nettoyage pour les
+                espaces résidentiels et commerciaux. Du nettoyage en profondeur
+                à l'entretien régulier, nous veillons à ce que votre espace soit
+                toujours propre et hygiénique.
+              </p>
+            </div>
+          </div>
+          {/* <div className="w-full h-full py-20"> */}
+          {/* <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+              Get to know your iSad.
+            </h2> */}
+          <Carousel items={cards} />
+          {/* </div> */}
+        </section>
+
+        <section className="relative h-[500px]">
+          <Image
+            src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727390595/bourgeois/cleaning-supply-flatlay-bottom_kruyo2.jpg"
+            layout="fill"
+            objectFit="cover"
+            alt="image d'un nettoyage de vitre d'immeuble"
+          />
+        </section>
+
+        {/* <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
               Nos services
@@ -119,7 +305,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">

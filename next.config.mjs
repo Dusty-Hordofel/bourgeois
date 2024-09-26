@@ -6,6 +6,8 @@ const nextConfig = {
       "www.nike.com",
       "images.unsplash.com",
       "plus.unsplash.com",
+      "res-console.cloudinary.com",
+      "asset.cloudinary.com",
     ],
   },
 };

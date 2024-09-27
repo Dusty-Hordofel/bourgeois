@@ -117,8 +117,8 @@ export default function Home() {
               <p className="h-full flex items-center">
                 Nous proposons une large gamme de services de nettoyage pour les
                 espaces résidentiels et commerciaux. Du nettoyage en profondeur
-                à l'entretien régulier, nous veillons à ce que votre espace soit
-                toujours propre et hygiénique.
+                à l&apos;entretien régulier, nous veillons à ce que votre espace
+                soit toujours propre et hygiénique.
               </p>
             </div>
           </div>
@@ -132,12 +132,13 @@ export default function Home() {
               NOS SOLUTIONS <br /> DE NETTOYAGE
             </h2>
             <p className="lg:w-[40%] ">
-              Chez Bourgeois Propreté, nous sommes fiers d'utiliser des produits
-              et des technologies de nettoyage de pointe pour garantir des
-              services de première qualité à nos clients. Nous nous engageons à
-              n'utiliser que les outils les plus récents et les plus avancés qui
-              sont non seulement efficaces, mais aussi écologiques et sans
-              danger pour votre famille et l'environnement.
+              Chez Bourgeois Propreté, nous sommes fiers d&apos;utiliser des
+              produits et des technologies de nettoyage de pointe pour garantir
+              des services de première qualité à nos clients. Nous nous
+              engageons à n&apos;utiliser que les outils les plus récents et les
+              plus avancés qui sont non seulement efficaces, mais aussi
+              écologiques et sans danger pour votre famille et
+              l&apos;environnement.
             </p>
           </div>
           <Image

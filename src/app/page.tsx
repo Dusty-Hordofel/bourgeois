@@ -33,7 +33,14 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="px-4 lg:px-6 h-14 flex justify-between">
-          <Link className="flex items-center justify-center " href="/">
+          <Link
+            className="flex items-center justify-center "
+            href="#section1"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollToSection(section1Ref);
+            }}
+          >
             <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
               Bourgeois.P
             </span>
@@ -64,7 +71,7 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <div className="h-14"></div>
-        <section className="">
+        <section ref={section1Ref} id="section1">
           <div className="flex px-10 py-20 sm:py-32">
             <h1 className="text-2xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
               Bourgeois Propreté ,<br />

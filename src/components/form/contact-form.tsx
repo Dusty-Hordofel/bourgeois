@@ -112,9 +112,8 @@ export default function ContactForm() {
         description: "Votre demande a été envoyée avec succès 🎉",
       });
 
-      setIsLoading(false);
-
       form.reset();
+      setIsLoading(false);
     } else {
       toast({
         title: "Quelque chose s'est mal passé 🔥",
@@ -142,6 +141,7 @@ export default function ContactForm() {
                     placeholder="Dupont"
                     {...field}
                     className="text-base"
+                    disabled={isLoading}
                   />
                 </FormControl>
                 <FormMessage />
@@ -155,7 +155,12 @@ export default function ContactForm() {
               <FormItem>
                 <FormLabel>Prénom</FormLabel>
                 <FormControl>
-                  <Input placeholder="Jean" {...field} className="text-base" />
+                  <Input
+                    placeholder="Jean"
+                    {...field}
+                    className="text-base"
+                    disabled={isLoading}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -174,6 +179,7 @@ export default function ContactForm() {
                     placeholder="0612345678"
                     {...field}
                     className="text-base"
+                    disabled={isLoading}
                   />
                 </FormControl>
                 <FormMessage />
@@ -191,6 +197,7 @@ export default function ContactForm() {
                     placeholder="jean.dupont@example.com"
                     {...field}
                     className="text-base"
+                    disabled={isLoading}
                   />
                 </FormControl>
                 <FormMessage />
@@ -208,6 +215,7 @@ export default function ContactForm() {
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
+                  disabled={isLoading}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -235,6 +243,7 @@ export default function ContactForm() {
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
+                  disabled={isLoading}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -258,7 +267,9 @@ export default function ContactForm() {
           <Button
             type="submit"
             className="py-6 w-full sm:w-max hover:bg-green-700 rounded-none relative"
-            disabled={Object.keys(form.formState.errors).length > 0}
+            disabled={
+              Object.keys(form.formState.errors).length > 0 || isLoading
+            }
             // style={{
             //   backgroundColor:
             //     Object.keys(form.formState.errors).length > 0 ? "red" : "black",

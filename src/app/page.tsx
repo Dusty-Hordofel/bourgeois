@@ -188,7 +188,7 @@ export default function Home() {
             <span className="text-green-700">REMPLISSEZ LE FORMULAIRE</span> ET
             <br /> NOUS VOUS CONTACTERONS
           </h2>
-          <div className=" flex justify-center items-center">
+          <div className=" flex justify-center items-center mt-10 lg:mt-32 lg:mb-20 mb-5">
             <div className="py-20 w-full sm:w-[75%]">
               <ContactForm />
             </div>

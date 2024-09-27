@@ -21,8 +21,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { sendEmail } from "@/lib/send-email";
+import RequestEmail from "@/email-templates/request-email";
+import { sendRequestEmail } from "@/actions/request-email.action";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
+import { LoaderCircle } from "lucide-react";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   firstName: z.string().min(2, {
     message: "Le prénom doit contenir au moins 2 caractères.",
   }),
@@ -81,6 +87,9 @@ const workTypes = [
 ];
 
 export default function ContactForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -93,8 +102,43 @@ export default function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  const { toast } = useToast();
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log("REQUETE", values);
+
+    // const userName = "Dusty";
+    // const userEmail = "dusty.bamana@isg.fr";
+    // const subscriptionStartDate = new Date();
+    // const subscriptionEndDate = new Date();
+
+    setIsLoading(true);
+    const response = await sendRequestEmail(values);
+
+    if (!response.error) {
+      toast({
+        title: "Excellente nouvelle 🤩",
+        description: "Votre demande a été envoyée avec succès 🎉",
+      });
+
+      setIsLoading(false);
+
+      //   form.reset({
+      //     firstName: "",
+      //     lastName: "",
+      //     phone: "",
+      //     email: "",
+      //     objectType: "",
+      //     workType: "",
+      //   });
+    } else {
+      toast({
+        title: "Quelque chose s'est mal passé 🔥",
+        description:
+          "Votre demande n'a pas pu être envoyé pour des raisons techniques⚠️",
+      });
+      setIsLoading(false);
+    }
   }
 
   console.log(form.formState.errors);
@@ -214,10 +258,10 @@ export default function ContactForm() {
             )}
           />
         </div>
-        <div className="flex  sm:justify-end">
+        <div className="flex  sm:justify-end ">
           <Button
             type="submit"
-            className="py-6 w-full sm:w-max hover:bg-green-700 rounded-none"
+            className="py-6 w-full sm:w-max hover:bg-green-700 rounded-none relative"
             disabled={Object.keys(form.formState.errors).length > 0}
             // style={{
             //   backgroundColor:
@@ -225,7 +269,14 @@ export default function ContactForm() {
             //   color: "white",
             // }}
           >
-            Envoyer votre demande
+            {isLoading && (
+              <div className="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+                <LoaderCircle color="#ffffff" className="animate-spin" />
+              </div>
+            )}
+            <span className={`${isLoading && "invisible"}`}>
+              Envoyer votre demande
+            </span>
           </Button>
         </div>
       </form>

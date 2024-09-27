@@ -7,50 +7,77 @@ import ShimmerButton from "@/components/magicui/shimmer-button";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
 import ContactForm from "./contact-form";
-import { data, people, competences } from "@/assets/data";
+import { data, peoples, competences } from "@/assets/data";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const cards = data.map((card, index) => (
     <Card key={card.src} card={card} index={index} />
   ));
 
+  const router = useRouter();
+  const section1Ref = useRef<HTMLInputElement | null>(null);
+  const section3Ref = useRef<HTMLInputElement | null>(null);
+  const section6Ref = useRef<HTMLInputElement | null>(null);
+
+  const handleScrollToSection = (
+    sectionRef: React.RefObject<HTMLDivElement>
+  ) => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link className="flex items-center justify-center" href="/">
-          {/* <Sparkles className="h-6 w-6" /> */}
-          <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
-            Bourgeois.P
-          </span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
+      <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="px-4 lg:px-6 h-14 flex justify-between">
+          <Link className="flex items-center justify-center " href="/">
+            {/* <Sparkles className="h-6 w-6" /> */}
+            <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
+              Bourgeois.P
+            </span>
+          </Link>
+          <nav className="flex justify-end gap-x-4 sm:gap-x-8 items-center flex-1">
+            {/* <Link
             className=" text-xs sm:text-sm font-medium hover:underline underline-offset-4 hidden sm:block"
             href="/"
           >
             Accueil
-          </Link>
-          <Link
-            className="text-xs sm:text-sm font-medium hover:underline underline-offset-4"
-            href="/"
-          >
-            Services
-          </Link>
-          <Link
+          </Link> */}
+
+            <Link
+              className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
+              href="#section3"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToSection(section3Ref);
+              }}
+            >
+              Services
+            </Link>
+            {/* <Link
             className="text-xs sm:text-sm font-medium hover:underline underline-offset-4 hidden sm:block"
             href="/"
           >
             À propos
-          </Link>
-          <Link
-            className="text-xs sm:text-sm font-medium hover:underline underline-offset-4"
-            href="/"
-          >
-            Contact
-          </Link>
-        </nav>
+          </Link> */}
+            <Link
+              className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
+              href="#section6"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToSection(section6Ref);
+              }}
+            >
+              Contact
+            </Link>
+          </nav>
+        </div>
       </header>
       <main className="flex-1">
+        <div className="h-14"></div>
         <section className="">
           {/* text-white */}
           <div className="flex px-10 py-32">
@@ -72,7 +99,7 @@ export default function Home() {
               </p>
               <div className="flex flex-row bg-gray-400 justify-end gap-x-14 pb-5 pt-10">
                 <div className="flex flex-row items-center justify-center">
-                  <AnimatedTooltip items={people} />
+                  <AnimatedTooltip items={peoples} />
                 </div>
                 <div>
                   <ShimmerButton className="shadow-2xl flex gap-x-4">
@@ -86,7 +113,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className=""></div>
+
         <section className="relative h-[700px]">
           <Image
             src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727386521/bourgeois/pexels-vlad-fonsark-2175898-5100851_myhlje.jpg"
@@ -96,7 +123,7 @@ export default function Home() {
           />
         </section>
 
-        <section>
+        <section ref={section3Ref} id="section3">
           <div className="flex px-10 pb-10 pt-16">
             <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase  flex items-center text-shadow ">
               NOS SERVICES <br /> DE NETTOYAGE
@@ -155,7 +182,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {competences.map(({ src, title, description }, index) => (
               <div key={index} className="relative aspect-square">
-                <div className="absolute z-50 text-white p-10 text-shadow">
+                <div className="absolute z-10 text-white p-10 text-shadow">
                   <h3 className=" text-white text-sm md:text-xl font-medium font-sans text-left">
                     {title}
                   </h3>
@@ -175,19 +202,24 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-gray-100 flex px-10 py-20 flex-col">
+        <section
+          className="bg-gray-100 flex px-10 py-20 flex-col"
+          ref={section6Ref}
+          id="section6"
+        >
           <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
             <span className="text-green-700">REMPLISSEZ LE FORMULAIRE</span> ET
             <br /> NOUS VOUS CONTACTERONS
           </h2>
-          <div className="bg-yellow-300 flex justify-center items-center">
-            <div className="py-20 w-full sm:w-1/2">
+          <div className=" flex justify-center items-center">
+            <div className="py-20 w-full sm:w-[75%]">
               <ContactForm />
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-green-700 text-white">
+      {/* bg-green-700 */}
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-black text-white">
         <p className="text-xs ">
           © {new Date().getFullYear()} Bourgeois.P. Tous droits réservés.
         </p>

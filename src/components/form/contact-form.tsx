@@ -138,7 +138,11 @@ export default function ContactForm() {
               <FormItem>
                 <FormLabel>Nom</FormLabel>
                 <FormControl>
-                  <Input placeholder="Dupont" {...field} />
+                  <Input
+                    placeholder="Dupont"
+                    {...field}
+                    className="text-base"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -151,7 +155,7 @@ export default function ContactForm() {
               <FormItem>
                 <FormLabel>Prénom</FormLabel>
                 <FormControl>
-                  <Input placeholder="Jean" {...field} />
+                  <Input placeholder="Jean" {...field} className="text-base" />
                 </FormControl>
                 <FormMessage />
               </FormItem>

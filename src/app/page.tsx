@@ -65,8 +65,8 @@ export default function Home() {
       <main className="flex-1">
         <div className="h-14"></div>
         <section className="">
-          <div className="flex px-10 py-32">
-            <h1 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
+          <div className="flex px-10 py-20 sm:py-32">
+            <h1 className="text-2xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
               Bourgeois Propreté ,<br />
               <span className="text-green-700">
                 l’excellence pour un <br />

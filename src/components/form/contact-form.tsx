@@ -192,7 +192,7 @@ export default function ContactForm() {
             name="objectType"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Type d'objet</FormLabel>
+                <FormLabel>Type d&apos;objet</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}

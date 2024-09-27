@@ -63,7 +63,7 @@ const ServiceRequestEmail = ({
           <Text>
             Cordialement,
             <br />
-            L'équipe de Bourgeois Propreté
+            L&apos;équipe de Bourgeois Propreté
           </Text>
         </Section>
       </Container>

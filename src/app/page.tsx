@@ -6,7 +6,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import ShimmerButton from "@/components/magicui/shimmer-button";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
-import ContactForm from "./contact-form";
+import ContactForm from "../components/form/contact-form";
 import { data, peoples, competences } from "@/assets/data";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -34,19 +34,11 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="px-4 lg:px-6 h-14 flex justify-between">
           <Link className="flex items-center justify-center " href="/">
-            {/* <Sparkles className="h-6 w-6" /> */}
             <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
               Bourgeois.P
             </span>
           </Link>
           <nav className="flex justify-end gap-x-4 sm:gap-x-8 items-center flex-1">
-            {/* <Link
-            className=" text-xs sm:text-sm font-medium hover:underline underline-offset-4 hidden sm:block"
-            href="/"
-          >
-            Accueil
-          </Link> */}
-
             <Link
               className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
               href="#section3"
@@ -57,12 +49,6 @@ export default function Home() {
             >
               Services
             </Link>
-            {/* <Link
-            className="text-xs sm:text-sm font-medium hover:underline underline-offset-4 hidden sm:block"
-            href="/"
-          >
-            À propos
-          </Link> */}
             <Link
               className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
               href="#section6"
@@ -79,7 +65,6 @@ export default function Home() {
       <main className="flex-1">
         <div className="h-14"></div>
         <section className="">
-          {/* text-white */}
           <div className="flex px-10 py-32">
             <h1 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
               Bourgeois Propreté ,<br />
@@ -88,7 +73,7 @@ export default function Home() {
                 cadre de vie impeccable.
               </span>
             </h1>
-            {/* lg:flex */}
+
             <div className=" flex-col w-[35%] hidden">
               <p>
                 Nous nous engageons à fournir des services de nettoyage de haute
@@ -156,7 +141,6 @@ export default function Home() {
             </p>
           </div>
           <Image
-            // src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727434026/bourgeois/AnyConv.com__view-frame-with-blue-cleaning-products_aiswas.webp"
             src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727434118/bourgeois/AnyConv.com__vecteezy_blue-cleaning-bucket-with-yellow-cleaning-supplies_46096376_k10x2r.webp"
             layout="fill"
             objectFit="cover"
@@ -169,14 +153,6 @@ export default function Home() {
             <h2 className="text-[28px] font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center  text-shadow mb-10">
               Pourquoi nous choisir ?
             </h2>
-            {/* <p className="right-0 lg:w-[40%] text-shadow ">
-              Chez Bourgeois Propreté, nous sommes fiers d'utiliser des produits
-              et des technologies de nettoyage de pointe pour garantir des
-              services de première qualité à nos clients. Nous nous engageons à
-              n'utiliser que les outils les plus récents et les plus avancés qui
-              sont non seulement efficaces, mais aussi écologiques et sans
-              danger pour votre famille et l'environnement.
-            </p> */}
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -218,7 +194,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      {/* bg-green-700 */}
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-black text-white">
         <p className="text-xs ">
           © {new Date().getFullYear()} Bourgeois.P. Tous droits réservés.

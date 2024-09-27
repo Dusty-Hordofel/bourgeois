@@ -1,4 +1,4 @@
-import DummyContent from "@/app/dynamic-content";
+import DummyContent from "@/components/dynamic-content";
 
 const peoples = [
   {

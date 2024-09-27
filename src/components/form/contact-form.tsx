@@ -21,8 +21,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { sendEmail } from "@/lib/send-email";
-import RequestEmail from "@/email-templates/request-email";
 import { sendRequestEmail } from "@/actions/request-email.action";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -105,13 +103,6 @@ export default function ContactForm() {
   const { toast } = useToast();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("REQUETE", values);
-
-    // const userName = "Dusty";
-    // const userEmail = "dusty.bamana@isg.fr";
-    // const subscriptionStartDate = new Date();
-    // const subscriptionEndDate = new Date();
-
     setIsLoading(true);
     const response = await sendRequestEmail(values);
 
@@ -123,14 +114,7 @@ export default function ContactForm() {
 
       setIsLoading(false);
 
-      //   form.reset({
-      //     firstName: "",
-      //     lastName: "",
-      //     phone: "",
-      //     email: "",
-      //     objectType: "",
-      //     workType: "",
-      //   });
+      form.reset();
     } else {
       toast({
         title: "Quelque chose s'est mal passé 🔥",

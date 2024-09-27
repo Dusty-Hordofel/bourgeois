@@ -126,6 +126,25 @@ const data = [
     content: <DummyContent />,
   },
 ];
+const competences = [
+  {
+    title: "Professionnalisme",
+    description:
+      "Une équipe formée et expérimentée pour des résultats impeccables.",
+    src: "https://res.cloudinary.com/dgsc66scx/image/upload/v1727386521/bourgeois/pexels-mastercowley-713297_hfl4hf.jpg",
+  },
+  {
+    title: "Flexibilité",
+    description:
+      "Des services adaptés à vos besoins et à votre emploi du temps.",
+    src: "https://res.cloudinary.com/dgsc66scx/image/upload/v1727386518/bourgeois/pexels-tima-miroshnichenko-6195117_czs50u.jpg",
+  },
+  {
+    title: "Écologique",
+    description: "Utilisation de produits respectueux de l'environnement.",
+    src: "https://res.cloudinary.com/dgsc66scx/image/upload/v1727386518/bourgeois/pexels-antonio-lorenzana-bermejo-353570724-14965464_mhsweb.jpg",
+  },
+];
 
 export default function Home() {
   const cards = data.map((card, index) => (
@@ -171,19 +190,16 @@ export default function Home() {
       <main className="flex-1">
         <section className="">
           {/* text-white */}
-          <div className="flex bg-yellow-200 px-10 pb-10 pt-20">
+          <div className="flex px-10 py-32">
             <h1 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase">
               Bourgeois Propreté ,<br />
-              <span className="text-green-600">
+              <span className="text-green-700">
                 l’excellence pour un <br />
                 cadre de vie impeccable.
               </span>
-              {/* l’excellence de la propreté, pour des espaces
-            impeccables. */}
             </h1>
-            {/* objectif est d’assurer la propreté et le confort de chaque espace
-              que nous traitons. */}
-            <div className="flex flex-col w-[35%] ">
+            {/* lg:flex */}
+            <div className=" flex-col w-[35%] hidden">
               <p>
                 Nous nous engageons à fournir des services de nettoyage de haute
                 qualité adaptés à une variété de secteurs. Nous intervenons avec
@@ -192,16 +208,10 @@ export default function Home() {
                 Notre.
               </p>
               <div className="flex flex-row bg-gray-400 justify-end gap-x-14 pb-5 pt-10">
-                <div
-                  // className="flex flex-row items-center justify-center mb-10 w-full"
-                  className="flex flex-row items-center justify-center"
-                >
+                <div className="flex flex-row items-center justify-center">
                   <AnimatedTooltip items={people} />
                 </div>
-                <div
-
-                // className="z-10 flex min-h-[16rem] items-center justify-center"
-                >
+                <div>
                   <ShimmerButton className="shadow-2xl flex gap-x-4">
                     <span className="whitespace-pre-wrap text-center text-sm leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg font-extralight">
                       Ils parlent de nous{" "}
@@ -224,14 +234,12 @@ export default function Home() {
         </section>
 
         <section>
-          <div className="flex bg-yellow-200 px-10 pb-10 pt-16">
-            <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase bg-red-400 flex items-center">
+          <div className="flex px-10 pb-10 pt-16">
+            <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase  flex items-center text-shadow ">
               NOS SERVICES <br /> DE NETTOYAGE
             </h2>
-            {/* objectif est d’assurer la propreté et le confort de chaque espace
-              que nous traitons. */}
-            <div className="w-[35%] ">
-              <p className="bg-purple-400 h-full flex items-center">
+            <div className="hidden lg:block w-[35%] ">
+              <p className="h-full flex items-center">
                 Nous proposons une large gamme de services de nettoyage pour les
                 espaces résidentiels et commerciaux. Du nettoyage en profondeur
                 à l'entretien régulier, nous veillons à ce que votre espace soit
@@ -239,137 +247,72 @@ export default function Home() {
               </p>
             </div>
           </div>
-          {/* <div className="w-full h-full py-20"> */}
-          {/* <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-              Get to know your iSad.
-            </h2> */}
+
           <Carousel items={cards} />
-          {/* </div> */}
         </section>
 
-        <section className="relative h-[500px]">
-          <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center absolute z-50 left-10 top-10">
-            NOS SOLUTIONS <br /> DE NETTOYAGE
-          </h2>
-          <p className="absolute z-50 left-10 bottom-10 w-[40%] ">
-            Chez Bourgeois Propreté, nous sommes fiers d'utiliser des produits
-            et des technologies de nettoyage de pointe pour garantir des
-            services de première qualité à nos clients. Nous nous engageons à
-            n'utiliser que les outils les plus récents et les plus avancés qui
-            sont non seulement efficaces, mais aussi écologiques et sans danger
-            pour votre famille et l'environnement.
-          </p>
+        <section className="relative h-96 lg:h-[600px]">
+          {/* left-10 top-10 */}
+          <div className="px-10 pt-5 lg:pt-10 pb-10 absolute z-10 text-white  text-shadow space-y-2 sm:space-y-6 ">
+            <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center ">
+              NOS SOLUTIONS <br /> DE NETTOYAGE
+            </h2>
+            <p className="lg:w-[40%] ">
+              Chez Bourgeois Propreté, nous sommes fiers d'utiliser des produits
+              et des technologies de nettoyage de pointe pour garantir des
+              services de première qualité à nos clients. Nous nous engageons à
+              n'utiliser que les outils les plus récents et les plus avancés qui
+              sont non seulement efficaces, mais aussi écologiques et sans
+              danger pour votre famille et l'environnement.
+            </p>
+          </div>
           <Image
-            src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727390595/bourgeois/cleaning-supply-flatlay-bottom_kruyo2.jpg"
+            // src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727434026/bourgeois/AnyConv.com__view-frame-with-blue-cleaning-products_aiswas.webp"
+            src="https://res.cloudinary.com/dgsc66scx/image/upload/v1727434118/bourgeois/AnyConv.com__vecteezy_blue-cleaning-bucket-with-yellow-cleaning-supplies_46096376_k10x2r.webp"
             layout="fill"
             objectFit="cover"
             alt="image d'un nettoyage de vitre d'immeuble"
           />
         </section>
 
-        {/* <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-              Nos services
+        <section>
+          <div className="flex flex-col lg:flex-row px-10 pb-5 pt-20">
+            <h2 className="text-[28px] font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center  text-shadow mb-10">
+              Pourquoi nous choisir ?
             </h2>
-            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
-              <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1534350752840-1b1b71b4b4fe?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Icône de nettoyage de bureaux"
-                  width={100}
-                  height={100}
-                  className="rounded-full"
-                />
-                <h3 className="text-xl font-bold">Nettoyage de bureaux</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 text-center">
-                  Entretien régulier pour des espaces de travail propres et
-                  productifs.
-                </p>
-              </div>
-              <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1669101602124-f5b78895d91c?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Icône de nettoyage industriel"
-                  width={100}
-                  height={100}
-                  className="rounded-full"
-                />
-                <h3 className="text-xl font-bold">Nettoyage industriel</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 text-center">
-                  Solutions de nettoyage adaptées aux environnements
-                  industriels.
-                </p>
-              </div>
-              <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Icône de nettoyage spécialisé"
-                  width={100}
-                  height={100}
-                  className="rounded-full"
-                />
-                <h3 className="text-xl font-bold">Nettoyage spécialisé</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 text-center">
-                  Services sur mesure pour des besoins spécifiques.
-                </p>
-              </div>
-            </div>
+            {/* <p className="right-0 lg:w-[40%] text-shadow ">
+              Chez Bourgeois Propreté, nous sommes fiers d'utiliser des produits
+              et des technologies de nettoyage de pointe pour garantir des
+              services de première qualité à nos clients. Nous nous engageons à
+              n'utiliser que les outils les plus récents et les plus avancés qui
+              sont non seulement efficaces, mais aussi écologiques et sans
+              danger pour votre famille et l'environnement.
+            </p> */}
           </div>
-        </section> */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            {/* <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-              Pourquoi nous choisir ?
-            </h2> */}
 
-            <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none flex-1 uppercase flex items-center absolute z-50 left-10 top-10">
-              Pourquoi nous choisir ?
-            </h2>
-            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-              <div className="flex flex-col items-center space-y-2">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {competences.map(({ src, title, description }, index) => (
+              <div key={index} className="relative aspect-square">
+                <div className="absolute z-50 text-white p-10 text-shadow">
+                  <h3 className=" text-white text-sm md:text-xl font-medium font-sans text-left">
+                    {title}
+                  </h3>
+                  <p className=" text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2 ">
+                    {description}
+                  </p>
+                </div>
                 <Image
-                  src="https://plus.unsplash.com/premium_photo-1663047003710-59dca9550087?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Image représentant le professionnalisme"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
+                  src={src}
+                  alt="image d'un nettoyage de vitre d'immeuble"
+                  layout="fill"
+                  objectFit="cover"
+                  className="absolute inset-0"
                 />
-                <h3 className="font-bold">Professionnalisme</h3>
-                <p className="text-sm text-gray-500 text-center">
-                  Une équipe formée et expérimentée pour des résultats
-                  impeccables.
-                </p>
               </div>
-              <div className="flex flex-col items-center space-y-2">
-                <Image
-                  src="https://images.unsplash.com/photo-1667559180631-e4d1c9164d88?q=80&w=2925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Image représentant la flexibilité"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
-                />
-                <h3 className="font-bold">Flexibilité</h3>
-                <p className="text-sm text-gray-500 text-center">
-                  Des services adaptés à vos besoins et à votre emploi du temps.
-                </p>
-              </div>
-              <div className="flex flex-col items-center space-y-2">
-                <Image
-                  src="https://images.unsplash.com/photo-1707044353662-bbce055f9ff1?q=80&w=3029&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Image représentant l'écologie"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
-                />
-                <h3 className="font-bold">Écologique</h3>
-                <p className="text-sm text-gray-500 text-center">
-                  Utilisation de produits respectueux de l&apos;environnement.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
+
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
@@ -385,8 +328,8 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500">
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-green-700 text-white">
+        <p className="text-xs ">
           © {new Date().getFullYear()} Bourgeois.P. Tous droits réservés.
         </p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">

@@ -8,6 +8,7 @@ const nextConfig = {
       "plus.unsplash.com",
       "res-console.cloudinary.com",
       "asset.cloudinary.com",
+      "assets.aceternity.com",
     ],
   },
 };

@@ -267,9 +267,10 @@ export default function ContactForm() {
           <Button
             type="submit"
             className="py-6 w-full sm:w-max hover:bg-green-700 rounded-none relative"
-            disabled={
-              Object.keys(form.formState.errors).length > 0 || isLoading
-            }
+            disabled
+            // disabled={
+            //   Object.keys(form.formState.errors).length > 0 || isLoading
+            // }
             // style={{
             //   backgroundColor:
             //     Object.keys(form.formState.errors).length > 0 ? "red" : "black",

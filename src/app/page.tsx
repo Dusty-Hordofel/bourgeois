@@ -64,8 +64,18 @@ export default function Home() {
                 handleScrollToSection(section6Ref);
               }}
             >
-              Contact
+              <span className="text-green-700 text-xl">(07 45 48 39 15)</span>
             </Link>
+            {/* <Link
+              className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
+              href="#section6"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToSection(section6Ref);
+              }}
+            >
+              Contact
+            </Link> */}
           </nav>
         </div>
       </header>

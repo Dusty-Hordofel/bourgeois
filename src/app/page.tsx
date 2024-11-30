@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
-
-import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ShimmerButton from "@/components/magicui/shimmer-button";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
 import ContactForm from "../components/form/contact-form";
 import { data, peoples, competences } from "@/assets/data";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useRouter } from "next/navigation";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const cards = data.map((card, index) => (
@@ -21,65 +21,14 @@ export default function Home() {
   const section3Ref = useRef<HTMLInputElement | null>(null);
   const section6Ref = useRef<HTMLInputElement | null>(null);
 
-  const handleScrollToSection = (
-    sectionRef: React.RefObject<HTMLDivElement>
-  ) => {
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="px-4 lg:px-6 h-14 flex justify-between">
-          <Link
-            className="flex items-center justify-center "
-            href="#section1"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollToSection(section1Ref);
-            }}
-          >
-            <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
-              Bourgeois.P
-            </span>
-          </Link>
-          <nav className="flex justify-end gap-x-4 sm:gap-x-8 items-center flex-1">
-            <Link
-              className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
-              href="#section3"
-              onClick={(e) => {
-                e.preventDefault();
-                handleScrollToSection(section3Ref);
-              }}
-            >
-              Services
-            </Link>
-            <Link
-              className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
-              href="#section6"
-              onClick={(e) => {
-                e.preventDefault();
-                handleScrollToSection(section6Ref);
-              }}
-            >
-              <span className="text-green-700 text-xl">(07 45 48 39 15)</span>
-            </Link>
-            {/* <Link
-              className="text-sm sm:text-base font-medium hover:underline underline-offset-4"
-              href="#section6"
-              onClick={(e) => {
-                e.preventDefault();
-                handleScrollToSection(section6Ref);
-              }}
-            >
-              Contact
-            </Link> */}
-          </nav>
-        </div>
-      </header>
-      <main className="flex-1">
+      <Navbar
+        section1Ref={section1Ref}
+        section3Ref={section3Ref}
+        section6Ref={section6Ref}
+      />
+      <main>
         <div className="h-14"></div>
         <section ref={section1Ref} id="section1">
           <div className="flex px-10 py-20 sm:py-32">
@@ -212,19 +161,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-black text-white">
-        <p className="text-xs ">
-          © {new Date().getFullYear()} Bourgeois.P. Tous droits réservés.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="/">
-            Mentions légales
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="/">
-            Politique de confidentialité
-          </Link>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   );
 }

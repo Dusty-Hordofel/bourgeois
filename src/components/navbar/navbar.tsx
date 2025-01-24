@@ -49,7 +49,7 @@ const Navbar = ({ section1Ref, section3Ref, section6Ref }: NavProps) => {
               handleScrollToSection(section6Ref);
             }}
           >
-            <span className="text-green-700 text-xl">(07 45 48 39 15)</span>
+            <span className="text-green-700 text-xl">(07 66 80 76 00)</span>
           </Link>
           {/* <Link
           className="text-sm sm:text-base font-medium hover:underline underline-offset-4"

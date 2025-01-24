@@ -8,8 +8,8 @@ import ContactForm from "../components/form/contact-form";
 import { data, peoples, competences } from "@/assets/data";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import Navbar from "@/components/navbar/navbar";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   const cards = data.map((card, index) => (

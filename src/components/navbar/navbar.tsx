@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { MutableRefObject } from "react";
 
@@ -17,7 +18,7 @@ const Navbar = ({ section1Ref, section3Ref, section6Ref }: NavProps) => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="px-4 lg:px-6 h-14 flex justify-between">
+      <div className="p-4 lg:p-6 min-h-14 flex justify-between">
         <Link
           className="flex items-center justify-center "
           href="#section1"
@@ -26,9 +27,11 @@ const Navbar = ({ section1Ref, section3Ref, section6Ref }: NavProps) => {
             handleScrollToSection(section1Ref);
           }}
         >
-          <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
+          <Image src="/logo.jpg" alt="logo bourgeois propreté" width={100} height={100} className=" max-md:w-20 ax-md:h-20 max-sm:w-14 max-sm:h-14" />
+          
+          {/* <span className="ml-2 sm:text-xl lg:text-2xl font-bold">
             Bourgeois.P
-          </span>
+          </span> */}
         </Link>
         <nav className="flex justify-end gap-x-4 sm:gap-x-8 items-center flex-1">
           <Link
